@@ -1,17 +1,17 @@
 import numpy as np
+import pandas as pd
 
 
-def calc_rows_norm(x):
-    rows_norm = np.array(x).shape(np.array().shape()[0])
-    rows_norm[::] = np.array(x)[::]
+def upper(df):
+    return pd.DataFrame(df).applymap(lambda a: a.upper() if isinstance(a, str) else a)
 
 
-def calc_cols_norm(x):
+def main():
+    data1 = np.array([[1, "hellO", 3, 4, 5, 6],
+                      [-1.5, 2, 5, "Fellow americans", 6.5, None],
+                      [-1.3, 8, 70, 8, 9.5, None]])
+    df = pd.DataFrame(data1)
+    print(upper(df))
 
-
-
-def calc_norm(x, axis = 0):
-    if axis == 0:
-        return calc_rows_norm(x)
-    else:
-        return calc_cols_norm(x)
+if __name__ == '__main__':
+    main()
