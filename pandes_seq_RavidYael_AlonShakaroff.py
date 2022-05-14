@@ -1,11 +1,8 @@
-import pandas
 import pandas as pd
 import math
 
+
 # ~~~~~~~~~ Q2.1 ~~~~~~~~~ #
-from pandas import DataFrame
-
-
 def three_x_plus_1(s):
     mask = s % 2 == 0
     res = s.copy()
@@ -34,7 +31,8 @@ def no_nans_idx(s):
 
 # ~~~~~~~~~ Q2.4 ~~~~~~~~~ #
 def partial_sum(s):
-    return math.sqrt(DataFrame(pandas.Series.abs(s)).sum(skipna=True))
+    s_not_null = s[s.notnull()]
+    return math.sqrt(abs(s_not_null).sum())
 
 
 # ~~~~~~~~~ Q2.5 ~~~~~~~~~ #
