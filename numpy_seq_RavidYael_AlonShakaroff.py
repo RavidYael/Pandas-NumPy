@@ -1,7 +1,7 @@
 import numpy as np
 
 
-# ===== Question 1 ===== #
+# ~~~~~~~~~ Q1.1 ~~~~~~~~~ #
 def half(x):
     res_arr = np.copy(np.array(x))
     res_arr = res_arr[1::2, ::2]
@@ -9,7 +9,7 @@ def half(x):
     return res_arr
 
 
-# ===== Question 2 ===== #
+# ~~~~~~~~~ Q1.2 ~~~~~~~~~ #
 def outer_product(x, y):
     x = np.array(x).reshape(1, np.array(x).shape[0])
     y = np.array(y).reshape(np.array(y).shape[0], 1)
@@ -17,7 +17,7 @@ def outer_product(x, y):
     return mult_matrix
 
 
-# ===== Question 3 ===== #
+# ~~~~~~~~~ Q1.3 ~~~~~~~~~ #
 def extract_logical(x, arr):
     ind = (arr % 1 == 0)
     z = x[ind == True]
@@ -29,7 +29,7 @@ def extract_integer(x, arr):
     ind = np.zeros((x.ndim, z.size), dtype=int)
     return z, ind
 
-# ===== Question 4 ===== #
+# ~~~~~~~~~ Q1.4 ~~~~~~~~~ #
 def calc_norm(x, axis=0):
     powered_x = x ** 2
     x_summed = np.sum(powered_x.transpose(), axis=axis)
@@ -48,7 +48,7 @@ def normalize(x, axis=0):
     return res
 
 
-# ===== Question 5 ===== #
+# ~~~~~~~~~ Q1.5 ~~~~~~~~~ #
 def matrix_norm(x, k=1000):
     A = x
     n = x.shape[0]
@@ -59,7 +59,7 @@ def matrix_norm(x, k=1000):
     return np.max(u)
 
 
-# ===== Question 6 ===== #
+# ~~~~~~~~~ Q1.6 ~~~~~~~~~ #
 def det(A):
     A = np.array(A)
     print(A)
@@ -77,7 +77,7 @@ def det(A):
     return d
 
 
-# ===== Question 7 ===== #
+# ~~~~~~~~~ Q1.7 ~~~~~~~~~ #
 def black_white_segment(im, thresh):
     seg = im.copy()
     seg[seg < thresh] = 0
@@ -92,10 +92,8 @@ def segment(im, thresh=128):
 
     return black_white_segment(im, thresh)
 
-# ===== Question 8 ===== #
 
-
-# ===== Question 9 ===== #
+# ~~~~~~~~~ Q1.9 ~~~~~~~~~ #
 def is_magic(A):
     A = np.array((A))
     s = np.sum(A[:,0])
