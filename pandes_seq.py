@@ -85,3 +85,26 @@ def unique_dict(df, how='col'):
 # ~~~~~~~~~ Q2.9 ~~~~~~~~~ #
 def upper(df):
     return pd.DataFrame(df).applymap(lambda a: a.upper() if isinstance(a, str) else a)
+
+
+# ~~~~~~~~~ Q2.10 ~~~~~~~~~ #
+def stable_marriage(dames, gents, marriages):
+    dames_indexes = dames.index
+    gents_indexes = gents.index
+    dames_preferences = pd.DataFrame(False, index=dames_indexes, columns=gents_indexes)
+    gents_preferences = pd.DataFrame(False, index=gents_indexes, columns=dames_indexes)
+
+    for dame, gent in marriages:
+        dame_preference_order = dames.loc[dame]
+        gent_rank = dame_preference_order[dame_preference_order == gent].index[0]
+        gents_ranked_better = dame_preference_order[:gent_rank].values
+        gent_preference_order = gents.loc[gent]
+        dame_rank = gent_preference_order[gent_preference_order == dame].index[0]
+        dames_ranked_better = gent_preference_order[:dame_rank].values
+        dames_preferences.loc[dame][gents_ranked_better] = True
+        gents_preferences.loc[gent][dames_ranked_better] = True
+
+    dames_preferences = dames_preferences.transpose()
+    stable = not((dames_preferences & gents_preferences).any(axis=None))
+
+    return stable
